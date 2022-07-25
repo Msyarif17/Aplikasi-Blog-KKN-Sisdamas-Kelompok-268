@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TagSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +15,11 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        Tag::create([
-            'name' => 'Kegiatan',
-            'slug' => 'kegiatan',
+        User::create([
+            'name' => 'Admin',
+            'email' => 'kelompok268@gmail.com',
+            'password' => bcrypt('123456'),
         ]);
+
     }
 }

@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Tag;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TagSeeder extends Seeder
+class InitDataSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,9 +14,7 @@ class TagSeeder extends Seeder
      */
     public function run()
     {
-        Tag::create([
-            'name' => 'Kegiatan',
-            'slug' => 'kegiatan',
-        ]);
+        $this->call(UserSeeder::class);
+        $this->call(TagSeeder::class);
     }
 }
