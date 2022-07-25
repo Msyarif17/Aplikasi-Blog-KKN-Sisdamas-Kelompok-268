@@ -32,3 +32,12 @@ Route::get('contact-us',[ContactController::class, 'contact_us'])->name('contact
 Auth::routes();
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
+Route::prefix('dashboard')->name('dash.')->group(function(){
+    Route::get('/',[DashboardController::class, 'index'])->name('index');
+    Route::resource('/category',App\Http\Controllers\Backend\CategoryController::class);
+    Route::resource('/tag',App\Http\Controllers\Backend\TagController::class);
+    Route::resource('/post',App\Http\Controllers\Backend\PostController::class);
+    Route::resource('/user',App\Http\Controllers\Backend\UserController::class);
+    
+
+});

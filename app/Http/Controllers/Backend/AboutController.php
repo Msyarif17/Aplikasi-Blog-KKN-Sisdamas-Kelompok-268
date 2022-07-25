@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
 
 class AboutController extends Controller
 {
@@ -12,17 +13,11 @@ class AboutController extends Controller
     {
         if ($request->ajax()) {
             return $datatables->of(About::query()->latest()->withTrashed())
-                ->addColumn('name', function (About $about) {
-                    return $about->name;
+                ->addColumn('title', function (About $about) {
+                    return $about->title;
                 })
-                ->addColumn('barcode_img', function (About $about) {
-                    return \view('dashboard.barang.barcode', compact('barang'));
-                })
-                ->addColumn('hargaEcer', function (About $about) {
-                    return $about->harga_beli_satuan;
-                })
-                ->addColumn('stok', function (About $about) {
-                    return \view('dashboard.barang.button_stok_action', compact('barang'));
+                ->addColumn('content', function (About $about) {
+                    return Str::limit($about->content,10,'...') ;
                 })
                 ->addColumn('action', function (About $about) {
 
@@ -38,7 +33,7 @@ class AboutController extends Controller
                 ->rawColumns(['status', 'action'])
                 ->make(true);
         } else {
-            return view('dashboard.barang.index');
+            return view('backend.about.index');
 
         }
     }
