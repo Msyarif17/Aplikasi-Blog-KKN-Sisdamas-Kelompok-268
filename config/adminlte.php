@@ -242,7 +242,7 @@ return [
                     [
                         'text' => 'Posts',
                         'icon' => 'fas fa-fw fa-list',
-                        'url'  => 'dashboard/post',
+                        'url'  => 'dashboard/Blog',
                     ],
                     [
                         'text' => 'Categories',
