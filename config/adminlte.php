@@ -227,7 +227,7 @@ return [
     'menu' => [
         [
             'text' => 'Dashboard',
-            'url' => 'home',
+            'url' => 'dashboard',
             'icon' => 'fas fa-fw fa-tachometer-alt',
         ],
         [
@@ -242,7 +242,7 @@ return [
                     [
                         'text' => 'Posts',
                         'icon' => 'fas fa-fw fa-list',
-                        'url'  => 'dashboard/Blog',
+                        'url'  => 'dashboard/blog',
                     ],
                     [
                         'text' => 'Categories',

@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 @stop
 
 @section('content')
