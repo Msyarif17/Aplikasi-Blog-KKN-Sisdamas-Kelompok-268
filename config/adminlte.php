@@ -241,14 +241,17 @@ return [
             'submenu' =>  [
                     [
                         'text' => 'Posts',
+                        'icon' => 'fas fa-fw fa-list',
                         'url'  => 'dashboard/post',
                     ],
                     [
                         'text' => 'Categories',
+                        'icon' => 'fas fa-fw fa-list-alt ',
                         'url'  => 'dashboard/category',
                     ],
                     [
                         'text' => 'Tags',
+                        'icon' => 'fas fa-fw fa-tags',
                         'url'  => 'dashboard/tag',
                     ],
                     
@@ -257,8 +260,34 @@ return [
         [
             'text' => 'Configurations',
             'icon'=> 'fa fa-cogs',
-            'url' => 'dashboard/configuration',
+            'submenu' => [
+                [
+                    'text' => 'Settings',
+                    'icon' => 'fas fa-fw fa-cog',
+                    'url'  => 'dashboard/settings',
+                ],
+                [
+                    'text' => 'About',
+                    'icon' => 'fas fa-fw fa-info',
+                    'url'  => 'dashboard/about',
+                ],
+                [
+                    'text' => 'Contact',
+                    'icon' => 'fas fa-fw fa-phone',
+                    'url'  => 'dashboard/contact',
+                ],
+                [
+                    'text' => 'Our Team',
+                    'icon' => 'fas fa-fw fa-users',
+                    'url'  => 'dashboard/team',
+                ],
+            ]
         ],
+        [
+            'text' => 'Admins',
+            'icon'=> 'fa fa-user-secret',
+            'url' => 'dashboard/admin',
+        ]
         
     ],
 
