@@ -7,17 +7,11 @@
             <div class="col-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <h3 class="card-title">Daftar Stok Barang</h3>
+                        <h3 class="card-title">Blog</h3>
                         <div class="float-right">
                             <a href="{{route('dashboard.blog.create')}}" class="btn btn-success btn-flat btn-sm"
-                               title="Tambah"><i class="fa fa-plus"></i> Tambah Barang</a>
-                            <a href="{{route('dashboard.blog.create')}}" class="btn btn-primary btn-flat btn-sm"
-                               title="Tambah"><i class="fa fa-barcode"></i> Scan Barcode</a>
-                            <a href="{{route('dashboard.blog.create')}}" class="btn btn-warning btn-flat btn-sm"
-                               title="Tambah"><i class="fa fa-print"></i> Print Semua Barcode</a>
-                            <a href="{{route('dashboard.blog.create')}}" class="btn btn-dark btn-flat btn-sm"
-                               title="Tambah"><i class="fa fa-print"></i> Print Semua Data</a>
-                        </div>
+                               title="Tambah"><i class="fa fa-plus"></i> Tambah Postingan</a>
+                            </div>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -26,10 +20,9 @@
                             <table id="data" class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Nama </th>
-                                    <th>Barcode</th>
-                                    <th>Harga Eceran</th>
-                                    <th>Stok</th>
+                                    <th>Judul</th>
+                                    <th>Isi</th>
+                                    <th>Link</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -58,9 +51,8 @@
                 },
                 columns: [
                     {data: 'title', name: 'title'},
-                    {data: ''},
-                    {data: 'hargaEcer'},
-                    {data: 'stok'},
+                    {data: 'content', name: 'content'},
+                    {data: 'link', name: 'link'},
                     
                     {
                         data: 'status', name: 'deleted_at', render: function (datum, type, row) {
