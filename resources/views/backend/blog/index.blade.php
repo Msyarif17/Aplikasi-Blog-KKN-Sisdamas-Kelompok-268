@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.master')
 @section('plugins.Datatables', true)
 
 @section('content')
@@ -9,13 +9,13 @@
                     <div class="card-header">
                         <h3 class="card-title">Daftar Stok Barang</h3>
                         <div class="float-right">
-                            <a href="{{route('admin.barang.create')}}" class="btn btn-success btn-flat btn-sm"
+                            <a href="{{route('dashboard.blog.create')}}" class="btn btn-success btn-flat btn-sm"
                                title="Tambah"><i class="fa fa-plus"></i> Tambah Barang</a>
-                            <a href="{{route('admin.barang.create')}}" class="btn btn-primary btn-flat btn-sm"
+                            <a href="{{route('dashboard.blog.create')}}" class="btn btn-primary btn-flat btn-sm"
                                title="Tambah"><i class="fa fa-barcode"></i> Scan Barcode</a>
-                            <a href="{{route('admin.barang.create')}}" class="btn btn-warning btn-flat btn-sm"
+                            <a href="{{route('dashboard.blog.create')}}" class="btn btn-warning btn-flat btn-sm"
                                title="Tambah"><i class="fa fa-print"></i> Print Semua Barcode</a>
-                            <a href="{{route('admin.barang.create')}}" class="btn btn-dark btn-flat btn-sm"
+                            <a href="{{route('dashboard.blog.create')}}" class="btn btn-dark btn-flat btn-sm"
                                title="Tambah"><i class="fa fa-print"></i> Print Semua Data</a>
                         </div>
                     </div>
@@ -54,11 +54,11 @@
                 processing: true,
                 searchDelay: 1000,
                 ajax: {
-                    url: '{{route('admin.barang.index')}}',
+                    url: '{{route('dashboard.blog.index')}}',
                 },
                 columns: [
-                    {data: 'nama'},
-                    {data: 'barcode_img'},
+                    {data: 'title', name: 'title'},
+                    {data: ''},
                     {data: 'hargaEcer'},
                     {data: 'stok'},
                     

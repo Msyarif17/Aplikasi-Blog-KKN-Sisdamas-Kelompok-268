@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.master')
 @section('content')
     <section class="content">
         
@@ -13,8 +13,8 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        {!! Form::open(['route' => 'admin.barang.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
-                        @include('dashboard.barang._form')
+                        {!! Form::open(['route' => 'dashboard.blog.store', 'method' => 'post', 'autocomplete' => 'false','enctype'=>'multipart/form-data']) !!}
+                        @include('backend.blog._form')
                         {!! Form::close() !!}
                     </div>
                     <!-- /.card-body -->
@@ -26,3 +26,28 @@
         <!-- /.row -->
     </section>
 @endsection
+@push('js')
+<script src="../build/ckeditor.js"></script>
+<script>ClassicEditor
+        .create( document.querySelector( '.editor' ), {
+            
+            licenseKey: '',
+            
+            
+            
+        } )
+        .then( editor => {
+            window.editor = editor;
+    
+            
+            
+            
+        } )
+        .catch( error => {
+            console.error( 'Oops, something went wrong!' );
+            console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+            console.warn( 'Build id: t2zy2a88iqju-nohdljl880ze' );
+            console.error( error );
+        } );
+</script>
+@endpush

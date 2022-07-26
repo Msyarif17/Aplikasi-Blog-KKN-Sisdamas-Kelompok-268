@@ -19,7 +19,7 @@ class BlogController extends Controller
                 'category',
                 'tagDetail',
             ])->latest()->withTrashed())
-                ->addColumn('judul', function (Blog $blog) {
+                ->addColumn('title', function (Blog $blog) {
                     return $blog->title;
                 })
                 ->addColumn('content', function (Blog $blog) {
@@ -42,7 +42,7 @@ class BlogController extends Controller
                 ->rawColumns(['status', 'action'])
                 ->make(true);
         } else {
-            return view('dashboard.blog.index');
+            return view('backend.blog.index');
 
         }
     }

@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('backend.layouts.master')
 @section('plugins.Datatables', true)
 
 @section('content')
