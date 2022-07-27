@@ -22,7 +22,7 @@ class AboutController extends Controller
                 })
                 ->addColumn('action', function (About $about) {
 
-                    return \view('dashboard.barang.button_action', compact('barang'));
+                    return \view('backend.about.button_action', compact('barang'));
                 })
                 ->addColumn('status', function (About $about) {
                     if ($about->deleted_at) {
@@ -41,7 +41,7 @@ class AboutController extends Controller
     // public function index(Request $request)
     // {
     //     $data = About::orderBy('id','DESC')->paginate(5);
-    //     return view('dashboard.barang.index',compact('data'))
+    //     return view('backend.about.index',compact('data'))
     //         ->with('i', ($request->input('page', 1) - 1) * 5);
     // }
     
@@ -65,47 +65,21 @@ class AboutController extends Controller
     {
         
         $this->validate($request, [
-            'nama' => 'required',
-            'id_supplyer' => 'required',
-            'kategori_id'=> 'required',
-            'harga_beli_satuan' => 'required',
-            'harga_jual_satuan' => 'required' ,
-            'stok'=> 'required',
+            'title' => 'required',
+            'slug' => 'required',
+            'image'=> 'required',
+            'content' => 'required',
             
         ]);
     
         $input = $request->all();
 
-        $input['discount'] = json_encode(array($request->discount));
-
-        $input['kategori_id'] = implode("",$request->kategori_id);
-
-        $input['id_supplyer'] = implode("",$request->id_supplyer);
-
-        $id = 1;
-
-        if(About::get()->count() != 0 || About::get()->count() != null){
-            $id = About::latest()->first()->id+1;
-        }
-
-        $input['kode'] = (int)
-        sprintf("%13s",$input['kategori_id']).
-        sprintf("%03s",$input['id_supplyer']).
-        sprintf("%03s",$id);
-
-        $br = new DNS1D;
-
-        $barcode =$br->getBarcodePNG($input['kode'], 'UPCA');
-
-        Storage::disk('image')->put('barcode-'.str($input['kode']).'.png',base64_decode($br->getBarcodePNG($input['kode'], 'UPCA')));
         
-        $input['barcode_img'] = 'image/barcode-'.str($input['kode']).'.png';
-
         About::create($input);
         
         
-        return redirect()->route('admin.barang.create')
-                        ->with('success','Barang berhasil ditambahkan');
+        return redirect()->route('dashboard.about.create')
+                        ->with('success','About berhasil ditambahkan');
     }
     
     /**
@@ -118,7 +92,7 @@ class AboutController extends Controller
     {
         
         $about = About::find($id);
-        return view('dashboard.barang.show',compact('user'));
+        return view('backend.about.show',compact('user'));
     }
     
     /**
@@ -129,14 +103,9 @@ class AboutController extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori::pluck('nama','id')->all();
-        $supplyer = Supplyer::pluck('nama','id')->all();
-        $discount = array();
-        for($i = 0;$i<=100;$i++){
-            array_push($discount,$i);
-        }
+        
         $about = About::find($id);
-        return view('dashboard.barang.edit',compact('barang','kategori','supplyer','discount'));
+        return view('backend.about.edit',compact('about'));
     }
     
     /**
@@ -149,26 +118,20 @@ class AboutController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'id_supplyer' => 'required',
-            'kategori_id'=> 'required',
-            'harga_beli_satuan' => 'required',
-            'harga_jual_satuan' => 'required' ,
-            'stok'=> 'required'
+            'title' => 'required',
+            'slug' => 'required',
+            'image'=> 'required',
+            'content' => 'required',
             
         ]);
     
         $input = $request->all();
-        $input['discount'] = json_encode(array($request->discount));
-        $input['kategori_id'] = implode("",$request->kategori_id);
-        $input['id_supplyer'] = implode("",$request->id_supplyer);
-    
         $about = About::find($id);
         $about->update($input);
         
     
-        return redirect()->route('admin.barang.edit',$id)
-                        ->with('success','barang updated successfully');
+        return redirect()->route('dashboard.about.edit',$id)
+                        ->with('success','About updated successfully');
     }
     
     /**
@@ -180,17 +143,8 @@ class AboutController extends Controller
     public function destroy($id)
     {
         About::find($id)->delete();
-        return redirect()->route('admin.barang.index')
-                        ->with('success','barang deleted successfully');
+        return redirect()->route('dashboard.about.index')
+                        ->with('success','About deleted successfully');
     }
-    public function tambahStok($id){
-        $input['stok'] = About::find($id)->stok+1;
-        About::find($id)->update($input);
-        return redirect()->route('admin.barang.index');
-    }
-    public function kurangiStok($id){
-        $input['stok'] = About::find($id)->stok-1;
-        About::find($id)->update($input);
-        return redirect()->route('admin.barang.index');
-    }
+    
 }
