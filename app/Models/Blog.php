@@ -20,6 +20,6 @@ class Blog extends Model
     ];
     protected $table = 'blog';
     public function tag(){
-        return $this->belongsTo(Tag::class);
+        return $this->belongsToMany(Tag::class,'tag_detail','blog_id','tag_id');
     }
 }

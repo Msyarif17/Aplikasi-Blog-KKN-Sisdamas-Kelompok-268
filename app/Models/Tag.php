@@ -11,7 +11,8 @@ class Tag extends Model
     use HasFactory,SoftDeletes;
     protected $fillable = ['name', 'slug'];
     protected $table = 'tags';
-    public function tagDetail(){
-        return $this->hasMany(Blog::class);
+    
+    public function blog(){
+        return $this->belongsToMany(Blog::class,'tag_details','tag_id','blog_id');
     }
 }
