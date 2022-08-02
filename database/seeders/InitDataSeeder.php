@@ -16,5 +16,9 @@ class InitDataSeeder extends Seeder
     {
         $this->call(UserSeeder::class);
         $this->call(TagSeeder::class);
+        $this->call(CategorySeeder::class);
+        $this->call(BlogSeeder::class);
+        $this->call(TagDetailsSeeder::class);
     }
+
 }
