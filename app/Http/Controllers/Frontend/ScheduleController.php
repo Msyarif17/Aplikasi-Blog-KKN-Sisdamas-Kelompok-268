@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Blog;
+use Storage;
 
-class BlogController extends Controller
+class ScheduleController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::all();
-        return $blogs;
+        $json = Storage::disk('local')->get('schedule.json');
+        return json_decode($json, true);
     }
 }

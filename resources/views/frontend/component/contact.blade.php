@@ -13,7 +13,7 @@
           <div class="contact-address">
             <i class="bi bi-geo-alt"></i>
             <h3>Address</h3>
-            <address>A108 Adam Street, NY 535022, USA</address>
+            <address>Sindangjaya, Sandingtaman, Kec. Panjalu, Kabupaten Ciamis, Jawa Barat 46264</address>
           </div>
         </div>
 
