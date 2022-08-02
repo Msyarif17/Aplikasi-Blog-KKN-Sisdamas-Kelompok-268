@@ -19,8 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/',[HomeController::class, 'index'])->name('home');
-Route::get('/new-home',[HomeController::class, 'base'])->name('newHome');
+Route::get('/',[HomeController::class, 'base'])->name('home');
 Route::get('/detail-blog/{id}',[DetailBlogController::class, 'index'])->name('detail');
 Route::get('/about',[AboutController::class, 'about'])->name('about');
 Route::get('/contact',[ContactController::class, 'contact'])->name('contact');
