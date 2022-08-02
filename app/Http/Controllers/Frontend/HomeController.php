@@ -12,4 +12,9 @@ class HomeController extends Controller
         $content = 'This is the content of the home page';
         return view('frontend.index',compact('title','content'));
     }
+
+    public function base()
+    {
+        return view('frontend.home');
+    }
 }
