@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('position')->nullable();
-            $table->text('bio')->default('-');
+            $table->text('bio')->nullable();
             $table->string('instagram')->nullable();
             $table->string('facebook')->nullable();
             $table->string('whatsapp')->nullable();
