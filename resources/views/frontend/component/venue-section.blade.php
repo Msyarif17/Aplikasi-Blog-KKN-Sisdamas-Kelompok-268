@@ -9,14 +9,14 @@
 
       <div class="row g-0">
         <div class="col-lg-6 venue-map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Sandingtaman,%20Kec.%20Panjalu,%20Kabupaten%20Ciamis,%20Jawa%20Barat%2046264+(Posko%20KKN%20Sisdamas)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
 
         <div class="col-lg-6 venue-info">
           <div class="row justify-content-center">
             <div class="col-11 col-lg-8 position-relative">
-              <h3>Downtown Conference Center, New York</h3>
-              <p>Iste nobis eum sapiente sunt enim dolores labore accusantium autem. Cumque beatae ipsam. Est quae sit qui voluptatem corporis velit. Qui maxime accusamus possimus. Consequatur sequi et ea suscipit enim nesciunt quia velit.</p>
+              <h3>Sandingtaman, Kec. Panjalu, Kabupaten Ciamis, Jawa Barat</h3>
+              <p>Sandingtaman adalah desa di kecamatan Panjalu, Ciamis, Jawa Barat, Indonesia.</p>
             </div>
           </div>
         </div>
@@ -58,39 +58,6 @@
             </a>
           </div>
         </div>
-
-        <div class="col-lg-3 col-md-4">
-          <div class="venue-gallery">
-            <a href="image/venue-gallery/5.jpg" class="glightbox" data-gall="venue-gallery">
-              <img src="image/venue-gallery/5.jpg" alt="" class="img-fluid">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-4">
-          <div class="venue-gallery">
-            <a href="image/venue-gallery/6.jpg" class="glightbox" data-gall="venue-gallery">
-              <img src="image/venue-gallery/6.jpg" alt="" class="img-fluid">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-4">
-          <div class="venue-gallery">
-            <a href="image/venue-gallery/7.jpg" class="glightbox" data-gall="venue-gallery">
-              <img src="image/venue-gallery/7.jpg" alt="" class="img-fluid">
-            </a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-4">
-          <div class="venue-gallery">
-            <a href="image/venue-gallery/8.jpg" class="glightbox" data-gall="venue-gallery">
-              <img src="image/venue-gallery/8.jpg" alt="" class="img-fluid">
-            </a>
-          </div>
-        </div>
-
       </div>
     </div>
 

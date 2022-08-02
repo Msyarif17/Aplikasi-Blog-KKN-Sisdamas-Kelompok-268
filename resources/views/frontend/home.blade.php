@@ -51,18 +51,18 @@
     <!-- End About Section -->
 
     <!-- ======= Speakers Section ======= -->
-    @include('frontend.component.blog-section')
+    @include('frontend.component.blog-section', $blogs)
     <!-- End Speakers Section -->
 
     <!-- ======= Schedule Section ======= -->
-    @include('frontend.component.schedule-section')
+    @include('frontend.component.schedule-section', $schedules)
     <!-- End Schedule Section -->
 
     <!-- ======= Venue Section ======= -->
     @include('frontend.component.venue-section')<!-- End Venue Section -->
 
     <!-- ======= Hotels Section ======= -->
-    @include('frontend.component.hotel-section')
+    {{-- @include('frontend.component.hotel-section') --}}
     <!-- End Hotels Section -->
 
     <!-- ======= Gallery Section ======= -->
@@ -73,14 +73,15 @@
    @include('frontend.component.support-section')<!-- End Sponsors Section -->
 
     <!-- =======  F.A.Q Section ======= -->
-    @include('frontend.component.faq')
+    @include('frontend.component.faq', $faq)
     <!-- End  F.A.Q Section -->
 
     <!-- ======= Subscribe Section ======= -->
-    @include('frontend.component.subscribe')<!-- End Subscribe Section -->
+    {{-- @include('frontend.component.subscribe') --}}
+    <!-- End Subscribe Section -->
 
     <!-- ======= Buy Ticket Section ======= -->
-    @include('frontend.component.buy-ticket')
+    {{-- @include('frontend.component.buy-ticket') --}}
     <!-- End Buy Ticket Section -->
 
     <!-- ======= Contact Section ======= -->
