@@ -40,6 +40,7 @@
     </section>
 @endsection
 @push('js')
+
     <script>
         $(function() {
             $('#data').DataTable({

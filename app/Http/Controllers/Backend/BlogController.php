@@ -60,8 +60,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        $kategori = Category::pluck('nama','id')->all();
-        $tag = Tag::pluck('nama','id')->all();
+        $kategori = Category::pluck('name','id')->all();
+        $tag = Tag::pluck('name','id')->all();
         
         return view('backend.blog.create',compact('kategori','tag'));
     }

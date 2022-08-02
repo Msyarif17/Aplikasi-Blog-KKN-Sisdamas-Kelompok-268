@@ -39,6 +39,6 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::resource('/tag',App\Http\Controllers\Backend\TagController::class);
     Route::resource('/blog',App\Http\Controllers\Backend\BlogController::class);
     Route::resource('/user',App\Http\Controllers\Backend\UserController::class);
-
+    Route::post('/ckeditor/upload',);
 
 });

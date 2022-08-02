@@ -3,32 +3,26 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
     public function index(Datatables $datatables, Request $request)
     {
         if ($request->ajax()) {
-            return $datatables->of(Barang::query()->latest()->withTrashed())
-                ->addColumn('name', function (Barang $barang) {
-                    return $barang->name;
+            return $datatables->of(Category::query()->latest()->withTrashed())
+                ->addColumn('name', function (Category $category) {
+                    return $category->name;
                 })
-                ->addColumn('barcode_img', function (Barang $barang) {
-                    return \view('dashboard.barang.barcode', compact('barang'));
-                })
-                ->addColumn('hargaEcer', function (Barang $barang) {
-                    return $barang->harga_beli_satuan;
-                })
-                ->addColumn('stok', function (Barang $barang) {
-                    return \view('dashboard.barang.button_stok_action', compact('barang'));
-                })
-                ->addColumn('action', function (Barang $barang) {
+                ->addColumn('action', function (Category $category) {
 
                     return \view('dashboard.barang.button_action', compact('barang'));
                 })
-                ->addColumn('status', function (Barang $barang) {
-                    if ($barang->deleted_at) {
+                ->addColumn('status', function (Category $category) {
+                    if ($category->deleted_at) {
                         return 'Inactive';
                     } else {
                         return 'Active';
@@ -43,8 +37,8 @@ class CategoryController extends Controller
     }
     // public function index(Request $request)
     // {
-    //     $data = Barang::orderBy('id','DESC')->paginate(5);
-    //     return view('dashboard.barang.index',compact('data'))
+    //     $data = Category::orderBy('id','DESC')->paginate(5);
+    //     return view('dashboaboutrang.index',compact('data'))
     //         ->with('i', ($request->input('page', 1) - 1) * 5);
     // }
     
@@ -55,12 +49,6 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::pluck('nama','id')->all();
-        $supplyer = Supplyer::pluck('nama','id')->all();
-        $discount = array();
-        for($i = 0;$i<=100;$i++){
-            array_push($discount,$i);
-        }
         return view('dashboard.barang.create',compact('kategori','supplyer','discount'));
     }
     
@@ -74,45 +62,13 @@ class CategoryController extends Controller
     {
         
         $this->validate($request, [
-            'nama' => 'required',
-            'id_supplyer' => 'required',
-            'kategori_id'=> 'required',
-            'harga_beli_satuan' => 'required',
-            'harga_jual_satuan' => 'required' ,
-            'stok'=> 'required',
-            
+            'name' => 'required',            
         ]);
     
         $input = $request->all();
-
-        $input['discount'] = json_encode(array($request->discount));
-
-        $input['kategori_id'] = implode("",$request->kategori_id);
-
-        $input['id_supplyer'] = implode("",$request->id_supplyer);
-
-        $id = 1;
-
-        if(Barang::get()->count() != 0 || Barang::get()->count() != null){
-            $id = Barang::latest()->first()->id+1;
-        }
-
-        $input['kode'] = (int)
-        sprintf("%13s",$input['kategori_id']).
-        sprintf("%03s",$input['id_supplyer']).
-        sprintf("%03s",$id);
-
-        $br = new DNS1D;
-
-        $barcode =$br->getBarcodePNG($input['kode'], 'UPCA');
-
-        Storage::disk('image')->put('barcode-'.str($input['kode']).'.png',base64_decode($br->getBarcodePNG($input['kode'], 'UPCA')));
+        $input['slug'] = Str::slug($request->name,'-');
         
-        $input['barcode_img'] = 'image/barcode-'.str($input['kode']).'.png';
-
-        Barang::create($input);
-        
-        
+        Category::create($input);
         return redirect()->route('admin.barang.create')
                         ->with('success','Barang berhasil ditambahkan');
     }
@@ -126,8 +82,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         
-        $barang = Barang::find($id);
-        return view('dashboard.barang.show',compact('user'));
+        $category = Category::find($id);
+        return view('dashboard.category.show',compact('category'));
     }
     
     /**
@@ -138,14 +94,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $kategori = Kategori::pluck('nama','id')->all();
-        $supplyer = Supplyer::pluck('nama','id')->all();
-        $discount = array();
-        for($i = 0;$i<=100;$i++){
-            array_push($discount,$i);
-        }
-        $barang = Barang::find($id);
-        return view('dashboard.barang.edit',compact('barang','kategori','supplyer','discount'));
+        $category = Category::find($id);
+        return view('dashboard.category.edit',compact('barang','kategori','supplyer','discount'));
     }
     
     /**
@@ -158,23 +108,14 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required',
-            'id_supplyer' => 'required',
-            'kategori_id'=> 'required',
-            'harga_beli_satuan' => 'required',
-            'harga_jual_satuan' => 'required' ,
-            'stok'=> 'required'
-            
+            'name' => 'required',            
         ]);
     
         $input = $request->all();
-        $input['discount'] = json_encode(array($request->discount));
-        $input['kategori_id'] = implode("",$request->kategori_id);
-        $input['id_supplyer'] = implode("",$request->id_supplyer);
-    
-        $barang = Barang::find($id);
-        $barang->update($input);
+        $input['slug'] = Str::slug($request->name,'-');
         
+        $category = Category::find($id);
+        $category->update($input);      
     
         return redirect()->route('admin.barang.edit',$id)
                         ->with('success','barang updated successfully');
@@ -188,18 +129,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Barang::find($id)->delete();
+        Category::find($id)->delete();
         return redirect()->route('admin.barang.index')
                         ->with('success','barang deleted successfully');
-    }
-    public function tambahStok($id){
-        $input['stok'] = Barang::find($id)->stok+1;
-        Barang::find($id)->update($input);
-        return redirect()->route('admin.barang.index');
-    }
-    public function kurangiStok($id){
-        $input['stok'] = Barang::find($id)->stok-1;
-        Barang::find($id)->update($input);
-        return redirect()->route('admin.barang.index');
     }
 }

@@ -1,6 +1,6 @@
 <div class="box-body">
     <div class="row">
-        <div class="col-sm-6 col-md-6">
+        <div class="col-sm-12 col-md-12">
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
                     {!! Form::label('image', 'Gambar Kegiatan') !!}
@@ -9,27 +9,28 @@
                     
                 </div>
             </div>
+            
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
-                    {!! Form::label('id_supplyer', 'supplyer') !!}
-                    {!! Form::select('id_supplyer[]', $supplyer,[], array('class' => 'form-control')) !!}
-                    {!! $errors->first('id_supplyer', '<p class="help-block invalid-feedback">:message</p>') !!} 
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-12">
-                <div class="form-group">
-                    {!! Form::label('title', 'Harga Jual') !!}
+                    {!! Form::label('title', 'Judul') !!}
                     {!! Form::text('title', @$blog->title, $errors->has('title') ? ['class' => 'form-control is-invalid'] : ['class' => 'form-control']) !!}
                     {!! $errors->first('title', '<p class="help-block invalid-feedback">:message</p>') !!}
                 </div>
             </div>
             <div class="col-sm-12 col-md-12">
                 <div class="form-group">
+                    {!! Form::label('category', 'Kategori Postingan') !!}
+                    {!! Form::select('category[]', $kategori,[], array('class' => 'form-control')) !!}
+                    {!! $errors->first('category', '<p class="help-block invalid-feedback">:message</p>') !!} 
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12">
+                <div class="form-group">
                     {!! Form::label('stok', 'Stok') !!}
-                    <div class="editor-container">
-						<div class="editor">
-                        </div>
-                    </div>
+                    
+                        <textarea style="color:black;" id="editor" rows="13" cols="80">
+                        </textarea>
+    
                     {!! $errors->first('stok', '<p class="help-block invalid-feedback">:message</p>') !!}
                 </div>
             </div>
@@ -42,3 +43,4 @@
 <div class="box-footer">
     {!! Form::submit(isset($blog) ? 'Update' : 'Save', ['class' => 'btn btn-primary btn-block', 'id' => 'save']) !!}
 </div>
+
