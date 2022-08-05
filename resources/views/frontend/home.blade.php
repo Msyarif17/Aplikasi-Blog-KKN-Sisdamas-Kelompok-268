@@ -17,14 +17,14 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{asset('vendor/aos/aos.css')}}" rel="stylesheet">
-  <link href="{{asset('vendor/bootstrap-new/css/bootstrap.min.css')}}" rel="stylesheet">
-  <link href="{{asset('vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-  <link href="{{asset('vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-  <link href="{{asset('vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+  <link href="//vendor/aos/aos.css" rel="stylesheet">
+  <link href="//vendor/bootstrap-new/css/bootstrap.min.css" rel="stylesheet">
+  <link href="//vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="//vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="//vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="{{asset('css/style.css')}}" rel="stylesheet">
+  <link href="//css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: TheEvent - v4.7.0
@@ -97,14 +97,14 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="vendor/aos/aos.js"></script>
-  <script src="vendor/bootstrap-new/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="vendor/php-email-form/validate.js"></script>
+  <script src="//vendor/aos/aos.js"></script>
+  <script src="//vendor/bootstrap-new/js/bootstrap.bundle.min.js"></script>
+  <script src="//vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="//vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="//vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="js/main.js"></script>
+  <script src="//js/main.js"></script>
 
 </body>
 
