@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/',[HomeController::class, 'base'])->name('home');
 Route::get('/new-home',[HomeController::class, 'base'])->name('newHome');
 Route::get('/detail-blog/{id}',[DetailBlogController::class, 'index'])->name('detail');
 Route::get('/about',[AboutController::class, 'about'])->name('about');
@@ -40,8 +40,9 @@ Route::middleware('auth')->prefix('dashboard')->name('dashboard.')->group(functi
     Route::get('/',[DashboardController::class, 'index'])->name('index');
     Route::resource('/category',App\Http\Controllers\Backend\CategoryController::class);
     Route::resource('/tag',App\Http\Controllers\Backend\TagController::class);
+    Route::patch('blog/restore/{id}',[App\Http\Controllers\Backend\BlogController::class, 'restore'])->name('blog.restore');
     Route::resource('/blog',App\Http\Controllers\Backend\BlogController::class);
     Route::resource('/user',App\Http\Controllers\Backend\UserController::class);
-
+    Route::post('/ckeditor/upload',);
 
 });

@@ -11,7 +11,11 @@ class Category extends Model
     use HasFactory,SoftDeletes;
     protected $fillable = ['name', 'slug'];
     protected $table = 'categories';
+    
     public function tagDetail(){
+        return $this->hasMany(Blog::class);
+    }
+    public function blog(){
         return $this->hasMany(Blog::class);
     }
 }

@@ -1,5 +1,5 @@
-@if ($barang->deleted_at)
-    <form action="{{route('dashboard.blog.destroy',$barang->id)}}" method="post" class="d-inline">
+@if ($blog->deleted_at)
+    <form action="{{route('dashboard.blog.restore',$blog->id)}}" method="post" class="d-inline">
         @method('PATCH')
         @csrf
         <button type="submit" class="btn btn-success btn-flast btn-sm" data-toggle="tootlip" data-placement="top"
@@ -9,11 +9,11 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <a href="{{route('dashboard.blog.edit',$barang->id)}}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
+            <a href="{{route('dashboard.blog.edit',$blog->id)}}" class="btn  btn-primary btn-flat btn-sm" data-toggle="tooltip"
                 data-placement="top" title="edit"><span class="fa fa-edit"></span></a>
         </div>
         <div class="col-6">
-            <form action="{{route('dashboard.blog.destroy',$barang->id)}}" method="post" class="d-inline"
+            <form action="{{route('dashboard.blog.destroy',$blog->id)}}" method="post" class="d-inline"
                 onsubmit="return confirm('apakah anda yakin?')">
               @csrf
               <input type="hidden" name="_method" value="delete" />

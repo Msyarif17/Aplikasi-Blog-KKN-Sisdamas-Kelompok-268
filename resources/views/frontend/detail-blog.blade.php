@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,45 +37,47 @@
 
 <body>
 
-    <!-- ======= Header ======= -->
-    @include('frontend.component.new-navbar')
-    <!-- End Header -->
+  <!-- ======= Header ======= -->
+  <div class="container" style="background-color: black">
+    @include('frontend.component.detail-navbar')
+  </div>
+  <!-- End Header -->
 
-    <main id="main">
+  <main id="main">
+    <div class="container" style="height: 10rem;">
+    </div>
 
-    <section id="speakers-details">
-        <div class="container">
+
+    <div class="container" style="margin-bottom: 10rem">
         <div class="section-header mt-3">
-            <h2>Speaker Details</h2>
-            <p>Praesentium ut qui possimus sapiente nulla.</p>
+            <h2>{{$blog->title}}</h2>
+            <p>{{$blog->created_at}}</p>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-            <img src="image/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
+            <img src={{asset("image/speakers/1.jpg")}} alt="Speaker 1" class="img-fluid">
             </div>
 
             <div class="col-md-6">
             <div class="details">
-                <h2>Brenden Legros</h2>
                 <div class="social">
                 <a href=""><i class="bi bi-twitter"></i></a>
                 <a href=""><i class="bi bi-facebook"></i></a>
                 <a href=""><i class="bi bi-instagram"></i></a>
                 <a href=""><i class="bi bi-linkedin"></i></a>
                 </div>
-                <p>Voluptatem perferendis sed assumenda voluptatibus. Laudantium molestiae sint. Doloremque odio dolore dolore sit. Quae labore alias ea omnis ex expedita sapiente molestias atque. Optio voluptas et.</p>
 
+                <p>{{$blog->content}}</p>
+{{--
                 <p>Aboriosam inventore dolorem inventore nam est esse. Aperiam voluptatem nisi molestias laborum ut. Porro dignissimos eum. Tempore dolores minus unde est voluptatum incidunt ut aperiam.</p>
 
-                <p>Et dolore blanditiis officiis non quod id possimus. Optio non commodi alias sint culpa sapiente nihil ipsa magnam. Qui eum alias provident omnis incidunt aut. Eius et officia corrupti omnis error vel quia omnis velit. In qui debitis autem aperiam voluptates unde sunt et facilis.</p>
+                <p>Et dolore blanditiis officiis non quod id possimus. Optio non commodi alias sint culpa sapiente nihil ipsa magnam. Qui eum alias provident omnis incidunt aut. Eius et officia corrupti omnis error vel quia omnis velit. In qui debitis autem aperiam voluptates unde sunt et facilis.</p> --}}
             </div>
             </div>
 
         </div>
         </div>
-
-    </section>
 
   </main><!-- End #main -->
 
@@ -97,6 +100,7 @@
 </body>
 
 </html>
+
 
 
 
