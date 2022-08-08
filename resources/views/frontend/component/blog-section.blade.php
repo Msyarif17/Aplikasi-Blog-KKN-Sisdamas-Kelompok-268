@@ -9,7 +9,7 @@
       <div class="row">
             @foreach ($blogs as $blog)
                 <div class="col-lg-4 col-md-6">
-                    <a href="/detail-blog/1">
+                    <a href="/detail-blog/{{$blog->id}}">
                 <div class="speaker" data-aos="fade-up" data-aos-delay="100">
                     <img src="image/speakers/1.jpg" alt="{{$blog["title"]}}" class="img-fluid">
                     <div class="details">
