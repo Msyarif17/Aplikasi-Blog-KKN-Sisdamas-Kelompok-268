@@ -62,7 +62,7 @@
     @include('frontend.component.venue-section')<!-- End Venue Section -->
 
     <!-- ======= Hotels Section ======= -->
-    {{-- @include('frontend.component.hotel-section') --}}
+    @include('frontend.component.hotel-section')
     <!-- End Hotels Section -->
 
     <!-- ======= Gallery Section ======= -->

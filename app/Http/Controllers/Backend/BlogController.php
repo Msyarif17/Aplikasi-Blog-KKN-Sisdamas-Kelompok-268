@@ -52,7 +52,7 @@ class BlogController extends Controller
     //     return view('dashboard.blog.index',compact('data'))
     //         ->with('i', ($request->input('page', 1) - 1) * 5);
     // }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -62,10 +62,10 @@ class BlogController extends Controller
     {
         $kategori = Category::pluck('nama','id')->all();
         $tag = Tag::pluck('nama','id')->all();
-        
+
         return view('backend.blog.create',compact('kategori','tag'));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -74,14 +74,14 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
             'category_id' => 'required',
             'tag_details_id' => 'required',
         ]);
-    
+
         $input = $request->all();
         $input['slug'] = Str::slug($request->title);
         $input['user_id'] = auth()->user()->id;
@@ -93,12 +93,12 @@ class BlogController extends Controller
 
 
         Blog::create($input);
-        
-        
+
+
         return redirect()->route('backend.blog.index')
                         ->with('success','Blog berhasil ditambahkan');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -107,11 +107,11 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        
+
         $blog = Blog::find($id);
         return view('backend.blog.index',compact('blog'));
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -125,7 +125,7 @@ class BlogController extends Controller
         $blog = Blog::find($id);
         return view('backend.blog.create',compact('kategori','tag','blog'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
@@ -142,7 +142,7 @@ class BlogController extends Controller
             'category_id' => 'required',
             'tag_details_id' => 'required',
         ]);
-    
+
         $input = $request->all();
         $input['slug'] = Str::slug($request->title);
         $input['user_id'] = auth()->user()->id;
@@ -151,15 +151,15 @@ class BlogController extends Controller
         $input['category_id'] = implode("",$request->category_id);
 
         $input['tag_detail_id'] = implode("",$request->tag_id);
-    
+
         $blog = Blog::find($id);
         $blog->update($input);
-        
-    
+
+
         return redirect()->route('admin.blog.update',$id)
                         ->with('success','Post updated successfully');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
